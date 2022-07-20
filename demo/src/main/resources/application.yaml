@@ -1,0 +1,7 @@
+quarkus:
+  datasource:
+    jdbc:
+      driver: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.10.200:3306/beasts_evolved_console?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useUnicode=true
+    username: root
+    password: 123456
