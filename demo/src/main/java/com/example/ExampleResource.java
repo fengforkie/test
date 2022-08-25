@@ -1,7 +1,8 @@
 package com.example;
 
-import io.agroal.api.AgroalDataSource;
+import com.entity.Role;
 import io.smallrye.common.annotation.NonBlocking;
+import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.mysqlclient.MySQLPool;
 import io.vertx.mutiny.sqlclient.Row;
@@ -28,10 +29,13 @@ public class ExampleResource {
 
     @GET()
     @Path("test")
-    @Produces(MediaType.TEXT_PLAIN)
-    @NonBlocking
-    public Object getUser(){
-        Uni<RowSet<Row>> rowSet = client.query("SELECT * FROM ROLE").execute();
-        return null;
+    public Multi<Role> getUser(){
+        Uni<RowSet<Row>> rowSet = client.query("SELECT * FROM role").execute();
+        Multi<Role> roles = rowSet.onItem().transformToMulti(set -> Multi.createFrom().iterable(set))
+                .onItem().transform(Role::from);
+
+        return roles;
     }
+
+    
 }
