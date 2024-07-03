@@ -7,6 +7,9 @@
     <groupId>org.example</groupId>
     <artifactId>for_fun</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
 
 
     <dependencies>
@@ -16,5 +19,20 @@
             <version>2.5</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <!--根据个人需要自己修改-->
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
