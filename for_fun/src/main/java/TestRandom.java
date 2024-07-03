@@ -7,5 +7,7 @@ public class TestRandom {
 
         System.out.println(random.nextInt());
         System.out.println(random.nextInt());
+        System.out.println(random.nextInt());
+        System.out.println("test");
     }
 }
